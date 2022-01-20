@@ -95,7 +95,7 @@ DATABASES = {
     }
 }
 
-TEST_ENV_LARP = env.str('TEST_ENV_LARP', 'DEFAULT VALUE')
+TEST_ENV_LARP = os.environ.get('TEST_ENV_LARP', 'DEFAULT VALUE')
 
 
 # Password validation
