@@ -10,11 +10,21 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+import environ
 from pathlib import Path
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent
+
+root = environ.Path(__file__) - 1  # Set the base directory to two levels.
+
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
+
+env.read_env(str(root.path('.env')))  # reading .env file
 
 
 # Quick-start development settings - unsuitable for production
@@ -84,6 +94,8 @@ DATABASES = {
         'PORT': 5432,
     }
 }
+
+TEST_ENV_LARP = env.str('TEST_ENV_LARP', 'DEFAULT VALUE')
 
 
 # Password validation
