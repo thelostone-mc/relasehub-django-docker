@@ -3,4 +3,8 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return HttpResponse("Random Derp Derp.")
+    return HttpResponse("Random Index Route.")
+
+
+def derp(request):
+    return HttpResponse("Another Derp Derp")
